@@ -1,28 +1,35 @@
-<h1><%= @post.title %>の編集ページ</h1>
-  <table class ="table table-bordered">
-      <p>画像をここに表示</p>
+<div class="text-center">
+  <h1><%= @post.title %>の編集</h1>
+</div>
 
-    <tr>
-      <th>タイトル</th>
-      <td><%= @post.title %></td>
-    </tr>
-    
-    <tr>
-      <th>好きなところ</th>
-      <th><%= @post.content_1 %></th>
-    </tr>
-    
-    <tr>
-      <th>好きなところ 2つめ</th>
-      <th><%= @post.content_2 %></th>
-    </tr>
-    
-    <tr>
-      <th>好きなところ 3つめ</th>
-      <th><%= @post.content_3 %></th>
-    </tr>
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
 
-  </table>
+     <%= form_with(model: @post, local: true) do |f| %>
+      <%= render "layouts/error_messages", model: @post %>
+      
+      <div class="form-group">
+        <%= f.label :title, "タイトル" %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
 
-<%= link_to "トップに戻る", root_url %>
-<%= link_to "この投稿を削除する" , @post, method: :delete, data:{ confirm: "本当によろしいですか？"} %>
+      <div class="form-group">
+        <%= f.label :content_1, "好きなところ" %>
+        <%= f.text_field :content_1, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :content_2, "好きなところ 2つめ" %>
+        <%= f.text_field :content_2, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :content_3, "好きなところ 3つめ" %>
+        <%= f.text_field :content_3, class: 'form-control' %>
+      </div>
+        <p>ここに画像投稿</p>
+      <%= f.submit '編集', class: 'btn btn-primary btn-block' %>
+    <% end %>
+    
+  </div>
+</div>

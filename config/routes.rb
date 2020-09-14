@@ -15,8 +15,8 @@ delete "logout", to: "sessions#destroy"
 get "signup", to: "users#new"
  #ユーザ登録画面
  
-resources :posts
-# RESTfulなルーティング
+resources :posts 
+  # RESTfulなルーティング
   
 resources :users, only:[:show, :new, :create, :edit]
 # は、下記をまとめて記述したもの。

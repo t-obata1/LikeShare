@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-before_action :user_logged_in?
+before_action :user_logged_in?,except: [:index, :show]
 before_action :correct_user, only:[:edit, :update, :destroy]
 
   
@@ -31,7 +31,7 @@ before_action :correct_user, only:[:edit, :update, :destroy]
   end
   
   def update
-    @post.update
+    @post.update(post_params)
     flash[:success] = "投稿を編集しました"
     redirect_back(fallback_location: root_path)
   end
@@ -39,7 +39,7 @@ before_action :correct_user, only:[:edit, :update, :destroy]
   def destroy
     @post.destroy
     flash[:success] = "投稿を削除しました。"
-    redirect_back(fallback_location: root_path)
+    redirect_to root_url
   end
   
  private

@@ -1,10 +1,27 @@
-<p>メモ：リンクをつける、横並びにする。</p>
+<p>メモ：リンクをつける、デザインを整える、画像を表示する</p>
 
-<h1>投稿一覧</h1>
 
-<ul>
-  <% @posts.each do |post| %>
-    <li><%= post.title %></li>
-  <% end %>
-</ul>
+<table class ="table table-striped">
+  
+  <thead>
+    <tr>
+      <th>投稿者名</th>
+      <th>タイトル</th>
+      <th>post_id</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.user.name %></td>
+        <td><%= link_to post.title, post_path(post) %> </td>
+        <td><%= post.id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+  
+
 
