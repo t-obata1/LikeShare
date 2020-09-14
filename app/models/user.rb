@@ -10,5 +10,5 @@ class User < ApplicationRecord
   has_many :posts
   has_many :likes
   
-  has_many :like_posts, through: :likes, sources: :post
+  # has_many :like_posts, through: :likes, sources: :post
 end

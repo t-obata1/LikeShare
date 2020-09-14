@@ -18,10 +18,10 @@ get "signup", to: "users#new"
 resources :posts
 # RESTfulなルーティング
   
-resources :user, only:[:show, :new, :create, :edit]
+resources :users, only:[:show, :new, :create, :edit]
 # は、下記をまとめて記述したもの。
-# get "user/:id" to: "users#show"
-# get "user" to: "users#neww"
-# post "user" to: "users#create"
-# get "user/:id/edit" to: "users#edit"
+# get "users/:id" to: "users#show"
+# get "users" to: "users#neww"
+# post "users" to: "users#create"
+# get "users/:id/edit" to: "users#edit"
 end
