@@ -1,0 +1,28 @@
+<h1><%= @post.title %>の編集ページ</h1>
+  <table class ="table table-bordered">
+      <p>画像をここに表示</p>
+
+    <tr>
+      <th>タイトル</th>
+      <td><%= @post.title %></td>
+    </tr>
+    
+    <tr>
+      <th>好きなところ</th>
+      <th><%= @post.content_1 %></th>
+    </tr>
+    
+    <tr>
+      <th>好きなところ 2つめ</th>
+      <th><%= @post.content_2 %></th>
+    </tr>
+    
+    <tr>
+      <th>好きなところ 3つめ</th>
+      <th><%= @post.content_3 %></th>
+    </tr>
+
+  </table>
+
+<%= link_to "トップに戻る", root_url %>
+<%= link_to "この投稿を削除する" , @post, method: :delete, data:{ confirm: "本当によろしいですか？"} %>
