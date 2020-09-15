@@ -1,0 +1,32 @@
+<p>メモ：リンクをつける、デザインを整える、画像を表示する<br>
+tableではなくcardをつかう、ページネーションをつける</p>
+
+<div class="container">
+  <div class="row">
+<table class ="table table-striped">
+  
+  <thead>
+    <tr>
+      <th>投稿者名</th>
+      <th>user_id</th>
+      <th>タイトル</th>
+      <th>post_id</th>
+      @userの中身はnil?→<%= @user.nil? %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= link_to post.user.name, user_path() %></td>
+        <td><%= post.user_id %></td>
+        <td><%= link_to post.title, post_path(post) %> </td>
+        <td><%= post.id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div> <!-- row -->
+</div>
+
+

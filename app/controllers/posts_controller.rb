@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-before_action :user_logged_in?,except: [:index, :show]
 before_action :correct_user, only:[:edit, :update, :destroy]
+before_action :user_logged_in?,except: [:index, :show]
 
 
   def index

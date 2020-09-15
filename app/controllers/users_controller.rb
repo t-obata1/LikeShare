@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-before_action :correct_user, only: [:edit, :update, :destroy]
+before_action :correct_user, only: [:update, :destroy] #他人は実行不可
 before_action :user_logged_in?,except: [:show, :new, :create] #showとnewとcreateはログインせずとも可能
 
   def show
     @user = User.find_by(id: params[:id])
+    @user_post = @user.posts.all.order(created_at: :desc)
   end
 
   def new
@@ -46,7 +47,11 @@ private
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
   
-  def correct_user
-    @user = current_user.find_by(id: params[:id])
-  end
+   def correct_user
+    @user = current_user(params[:id])
+     unless @user
+       redirect_to root_url
+     end
+   end
+  
 end
