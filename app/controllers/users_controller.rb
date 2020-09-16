@@ -5,6 +5,7 @@ before_action :user_logged_in?,except: [:show, :new, :create] #showとnewとcrea
   def show
     @user = User.find_by(id: params[:id])
     @user_post = @user.posts.all.order(created_at: :desc)
+    # @like = Like.new
   end
 
   def new
@@ -28,18 +29,21 @@ before_action :user_logged_in?,except: [:show, :new, :create] #showとnewとcrea
   end
   
   def update
-    @user.update(user_params)
-    flash[:success] = "ユーザ情報を編集しました。"
-    redirect_back(fallback_location: root_path)
+    if @user.update(user_params)
+     flash[:success] = "ユーザ情報を編集しました。"
+     redirect_back(fallback_location: root_path)
+    end
   end
   
   def destroy
     #退会処理
   end
+  
+  def likes
+    @user = User.find(params[:id])
+    @likes = @user.like_posts.page(params[:page])
+  end
 
-#likesしてる？
-#likeする
-#like消す　・・・モデルにメソッド書いて使用
 
 private
   
@@ -48,7 +52,7 @@ private
   end
   
    def correct_user
-    @user = current_user(params[:id])
+    @user = current_user(id: params[:id])
      unless @user
        redirect_to root_url
      end

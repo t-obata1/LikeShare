@@ -33,7 +33,7 @@ before_action :user_logged_in?,except: [:index, :show]
   def update
     @post.update(post_params)
     flash[:success] = "投稿を編集しました"
-    redirect_back(fallback_location: root_path)
+    redirect_to @post
   end
 
   def destroy
@@ -45,7 +45,7 @@ before_action :user_logged_in?,except: [:index, :show]
  private
 
   def post_params
-    params.require(:post).permit(:title, :content_1, :content_2, :content_3, :img)
+    params.require(:post).permit(:title, :content_1, :content_2, :content_3, :img, :remove_img)
   end
 
   def correct_user

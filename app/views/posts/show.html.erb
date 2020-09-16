@@ -1,30 +1,21 @@
-<h1><%= @post.title %>の詳細ページ</h1>
-  <table class ="table table-bordered">
-    
-      <p>画像をここに表示</p>
+<div class="container">
+  <div class="row text-center">
+    <div class="card col-sm-6 offset-3">
+      <div class="card-header"><h4><%= @post.title %></h4></div>
+        <div class="card-body">
+                <%= image_tag @post.img.url %>
+            <div class="card-text">
+              <p> </p>
+                <p class="bg-info text-light">ここがおすすめ！</p>
+                <p><%= @post.content_1 %></p>
+                <!--<p><= @post.content_2 %></p>-->
+                <!--<p><= @post.content_3 %></p>-->
+            </div>
+        </div>
+                <%= link_to "この投稿を編集する" , edit_post_path(@post) %>
+                <%= link_to "この投稿を削除する" , @post, method: :delete, data:{ confirm: "本当によろしいですか？"} %>
 
-    <tr>
-      <th>タイトル</th>
-      <td><%= @post.title %></td>
-    </tr>
-    
-    <tr>
-      <th>好きなところ</th>
-      <th><%= @post.content_1 %></th>
-    </tr>
-    
-    <tr>
-      <th>好きなところ 2つめ</th>
-      <th><%= @post.content_2 %></th>
-    </tr>
-    
-    <tr>
-      <th>好きなところ 3つめ</th>
-      <th><%= @post.content_3 %></th>
-    </tr>
+    </div> <!--col -->
 
-  </table>
-
-<%= link_to "トップに戻る", root_url %>
-<%= link_to "この投稿を編集する" , edit_post_path(@post) %>
-<%= link_to "この投稿を削除する" , @post, method: :delete, data:{ confirm: "本当によろしいですか？"} %>
+  </div><!-- row -->
+</div> <!-- container -->
