@@ -1,32 +1,25 @@
-<p>メモ：リンクをつける、デザインを整える、画像を表示する<br>
-tableではなくcardをつかう、ページネーションをつける</p>
+<p>メモ：デザインを整える、画像を表示する<br>
 
 <div class="container">
-  <div class="row">
-<table class ="table table-striped">
-  
-  <thead>
-    <tr>
-      <th>投稿者名</th>
-      <th>user_id</th>
-      <th>タイトル</th>
-      <th>post_id</th>
-      @userの中身はnil?→<%= @user.nil? %>
-    </tr>
-  </thead>
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= link_to post.user.name, user_path(post.user.id) %></td>
-        <td><%= link_to post.title, post_path(post) %> </td>
-        <td><%= post.user_id %></td>
-        <td><%= post.id %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-</div> <!-- row -->
-</div>
+  <div class="row text-center">
+      <% @posts.each do |post| %>
+      
+  <div class ="card col-md-4">
+        <h5 class="card-header">
+          <%= link_to post.title, post_path(post) %>
+        </h5>
+        <div class="card-body">
+          <%= post.content_1 %><br>
+          <p>投稿者:<%= link_to post.user.name, user_path(post.id) %></p>
+        </div>
+
+    </div> <!--card -->
+           <% end %>   
+  </div> <!-- row -->
+</div> <!-- container -->
 
 
+      <!--@userの中身はnil?→<= @user.nil? %>-->
+      <!--  <= post.user_id %>-->
+      <!--  <= post.id %>-->

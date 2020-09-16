@@ -3,7 +3,13 @@
     <div class="card col-sm-6 offset-3">
       <div class="card-header"><h4><%= @post.title %></h4></div>
         <div class="card-body">
-                <%= image_tag @post.img.url %>
+          <!--画像 -->
+          <% if @post.img? %>
+            <%= image_tag @post.img.url %>
+          <% else %>
+            <%= image_tag "noimg.jpg" %>
+          <% end %>
+          <!-- 画像 ここまで -->
             <div class="card-text">
               <p> </p>
                 <p class="bg-info text-light">ここがおすすめ！</p>
