@@ -1,13 +1,17 @@
 <div class="container">
   <div class="row text-center">
     
-    <div class="card col-sm-6 offset-3"> <!-- offset-3 左に3カラム分の余白 -->
+    <div class="card col-sm-6 py-3 offset-3"> <!-- offset-3 左に3カラム分の余白 -->
       <div class="card-header"><h4><%= @user.name %>さんの投稿一覧</h4>
       </div>
         <div class="card-body">
           <div class="card-text">
             <% @user_post.each do |user_post| %>
               <p><%=link_to user_post.title, post_path(user_post) %></p>
+            <% end %>
+            
+            <% if current_user == @user %>
+              <%= link_to "ユーザ情報編集", edit_user_path(@user) %>
             <% end %>
         </div>
     </div> <!-- col  -->

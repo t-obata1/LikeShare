@@ -32,6 +32,9 @@ before_action :user_logged_in?,except: [:show, :new, :create] #showとnewとcrea
     if @user.update(user_params)
      flash[:success] = "ユーザ情報を編集しました。"
      redirect_back(fallback_location: root_path)
+    else
+     flash[:danger] = "編集が出来ませんでした。"
+     render root_path
     end
   end
   

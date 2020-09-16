@@ -1,34 +1,42 @@
-<div class="text-center">
-  <h1><%= @post.title %>の編集</h1>
-</div>
+<div class="container">
+  <div class="row text-center">
+    <div class="card col-sm-6 py-3 offset-3">
+      <div class="card-header"><h4>投稿の編集</h4></div>
+        <div class="card-body">
+          
+          <% if @post.img? %>
+            <%= image_tag @post.img.url %>
+          <% else %>
+            <%= image_tag "noimg.jpg" %>
+          <% end %>
+          <!-- 画像 ここまで -->
+          
+          <div class="card-text">
+           <%= form_with(model: @post, local: true) do |f| %>
+            <%= render "layouts/error_messages", model: @post %>
+            
+            <!--<div class="form-group">-->
+            <!--  <p><#%= f.check_box :remove_img %>今の画像を削除する</p>-->
+            <!--</div-->
+            
+            <div class="form-group mt-3">
+              <%= f.label :title, "タイトル" %>
+              <%= f.text_field :title, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :content_1, "コメント" %>
+              <%= f.text_field :content_1, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :img, "新しい画像" %>
+              <%= f.file_field :img, class: "image" %>
+            </div>
 
-<div class="row">
-  <div class="col-sm-6 offset-sm-3">
-
-     <%= form_with(model: @post, local: true) do |f| %>
-      <%= render "layouts/error_messages", model: @post %>
-      
-      <div class="form-group">
-        <%= f.label :title, "タイトル" %>
-        <%= f.text_field :title, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :content_1, "好きなところ" %>
-        <%= f.text_field :content_1, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :content_2, "好きなところ 2つめ" %>
-        <%= f.text_field :content_2, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :content_3, "好きなところ 3つめ" %>
-        <%= f.text_field :content_3, class: 'form-control' %>
-      </div>
-      <%= f.submit '編集', class: 'btn btn-primary btn-block' %>
-    <% end %>
-    
-  </div>
-</div>
+            
+            <%= f.submit "編集", class: "btn btn-primary btn-block" %>
+           <% end %>
+            </div> <!--card-text -->
+         </div> <!--card body -->
+    </div> <!--col -->
+  </div><!-- row -->
+</div> <!-- container -->

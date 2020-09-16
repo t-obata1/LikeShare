@@ -1,21 +1,27 @@
-<p>メモ：デザインを整える、画像を表示する<br>
+<p>メモ：他人のpostとuser情報　edit、update、deleteができないようにする処理を実装<br>いいね機能実装 トップページ見出し
 
 <div class="container">
 
   <div class="row text-center">
-      <% @posts.each do |post| %>
-      
-  <div class ="card col-md-4">
+    
+    <% @posts.each do |post| %>
+      <div class ="card col-md-4 py-3">
         <h5 class="card-header">
           <%= link_to post.title, post_path(post) %>
         </h5>
         <div class="card-body">
-          <%= post.content_1 %><br>
-          <p>投稿者:<%= link_to post.user.name, user_path(post.id) %></p>
+          <% if post.img? %>
+            <%= image_tag post.img.url %>
+          <% else %>
+            <%= image_tag "noimg.jpg" %>
+          <% end %>
+          <!--<p><#%= post.content_1 %></p>-->
+          <p class="pt-3">投稿者:<%= link_to post.user.name, user_path(post.user.id) %></p>
+          <p><%= post.created_at %></p>
         </div>
-
-    </div> <!--card -->
-           <% end %>   
+      </div> <!--card -->
+    <% end %>   
+      
   </div> <!-- row -->
 </div> <!-- container -->
 

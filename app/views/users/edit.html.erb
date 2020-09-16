@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row text-center">
     
-    <div class="card col-sm-6 offset-3"> <!-- offset-3 左に3カラム分の余白 -->
+    <div class="card col-sm-6 py-3 offset-3"> <!-- offset-3 左に3カラム分の余白 -->
       <div class="card-header"><h4><%= @user.name %>さんのユーザ情報編集</h4>
       </div>
         <div class="card-body">
@@ -14,7 +14,7 @@
               <%= f.text_field :name, class: "form-control" %>
             </div>
             
-             <div class="form-groupe">
+             <div class="form-groupe my-3">
               <div class="text-left"><%= f.label :email, "Email" %></div>
               <%= f.text_field :email, class: "form-control" %>
             </div>
