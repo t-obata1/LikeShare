@@ -15,15 +15,15 @@ class User < ApplicationRecord
   #throughでlikesテーブルを通じてpost_idを取得する。
   
   def like(post) 
-    likes.find_or_create_by(post_id: post_id)
+    likes.find_or_create_by(post_id: post.id)
   end
   
   def unlike(post) 
-    like = likes.find_by(post_id: post_id)
+    like = likes.find_by(post_id: post.id)
     like.destroy if like
   end
   
-  def likes?(post) #likeしているかどうか判定
+  def likeing?(post) #likeしているかどうか判定
     self.like_posts.include?(post)
   end
 end

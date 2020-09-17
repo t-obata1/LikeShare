@@ -5,7 +5,7 @@ class LikesController < ApplicationController
     post = Post.find(params[:post_id])
     current_user.like(post)
     flash[:success] = "投稿をお気に入りしました"
-    redirectback(fallback_location: root_path)
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy

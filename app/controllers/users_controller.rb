@@ -45,6 +45,7 @@ before_action :user_logged_in?,except: [:show, :new, :create] #showとnewとcrea
   def likes
     @user = User.find(params[:id])
     @likes = @user.like_posts.page(params[:page])
+    counts(@user)
   end
 
 

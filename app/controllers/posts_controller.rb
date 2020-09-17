@@ -9,8 +9,16 @@ before_action :user_logged_in?,except: [:index, :show]
 
   def show
     @post = Post.find_by(id: params[:id])
+    counts(@post)
+    @count_likes
   end
+  
 
+# application_controllerに下記メソッドの記述  
+# 　def counts(post)
+#     @count_likes = post.likes.count
+#   end
+  
   def new
     @post = Post.new
   end
