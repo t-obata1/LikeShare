@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 before_action :correct_user, only:[:edit, :update, :destroy]
-before_action :user_logged_in?,except: [:index, :show]
+before_action :user_logged_in?,except: [:index]
 
 
   def index
@@ -10,7 +10,6 @@ before_action :user_logged_in?,except: [:index, :show]
   def show
     @post = Post.find_by(id: params[:id])
     counts(@post)
-    @count_likes
   end
   
 
@@ -53,7 +52,7 @@ before_action :user_logged_in?,except: [:index, :show]
  private
 
   def post_params
-    params.require(:post).permit(:title, :content_1, :content_2, :content_3, :img, :remove_img)
+    params.require(:post).permit(:title, :content_1, :img, :remove_img)
   end
 
   def correct_user

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-before_action :correct_user, only: [:update, :destroy] #他人は実行不可
-before_action :user_logged_in?,except: [:show, :new, :create] #showとnewとcreateはログインせずとも可能
+before_action :correct_user, only: [:update, :destroy, :edit] #他人は実行不可
+before_action :user_logged_in?,except: [:new, :create] #newとcreateはログインせずとも可能
 
   def show
     @user = User.find_by(id: params[:id])
@@ -16,8 +16,8 @@ before_action :user_logged_in?,except: [:show, :new, :create] #showとnewとcrea
     @user = User.new(user_params)
     
     if @user.save
-      flash[:succes] = "ユーザを登録しました"
-      redirect_to root_url
+      flash[:success] = "ユーザを登録しました"
+      redirect_to login_path
     else
       flash[:denger] = "ユーザを登録できませんでした"
       render :new
@@ -25,7 +25,7 @@ before_action :user_logged_in?,except: [:show, :new, :create] #showとnewとcrea
   end
   
   def edit
-     @user = User.find_by(id: params[:id])
+    # @user = User.find_by(id: params[:id])
   end
   
   def update
@@ -34,7 +34,7 @@ before_action :user_logged_in?,except: [:show, :new, :create] #showとnewとcrea
      redirect_back(fallback_location: root_path)
     else
      flash[:danger] = "編集が出来ませんでした。"
-     render root_path
+     redirect_to root_path
     end
   end
   
@@ -56,7 +56,7 @@ private
   end
   
    def correct_user
-    @user = current_user(id: params[:id])
+    @user = current_user
      unless @user
        redirect_to root_url
      end

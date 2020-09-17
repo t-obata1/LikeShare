@@ -24,6 +24,6 @@ class User < ApplicationRecord
   end
   
   def likeing?(post) #likeしているかどうか判定
-    self.like_posts.include?(post)
+      self.like_posts.include?(post)
   end
 end

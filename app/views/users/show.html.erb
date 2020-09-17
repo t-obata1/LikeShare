@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row text-center">
     
-    <div class="card col-sm-6 py-3 offset-3"> <!-- offset-3 左に3カラム分の余白 -->
+    <div class="card col-md-6 offset-md-3 py-3"> <!-- offset-3 左に3カラム分の余白 -->
       <div class="card-header"><h4><%= @user.name %>さんの投稿一覧</h4>
       </div>
         <div class="card-body">
@@ -13,7 +13,9 @@
             <% if current_user == @user %>
               <%= link_to "ユーザ情報編集", edit_user_path(@user) %>
             <% end %>
+            
         </div>
+      </div>
     </div> <!-- col  -->
   </div> <!-- /.row -->
 </div> <!-- /.container -->

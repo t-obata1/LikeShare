@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   
   private
+
   
   def user_logged_in?
     unless logged_in?
