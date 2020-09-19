@@ -19,7 +19,7 @@ before_action :user_logged_in?,except: [:new, :create] #newとcreateはログイ
       flash[:success] = "ユーザを登録しました"
       redirect_to login_path
     else
-      flash[:denger] = "ユーザを登録できませんでした"
+      flash[:danger] = "ユーザを登録できませんでした"
       render :new
     end
   end
