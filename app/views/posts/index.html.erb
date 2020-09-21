@@ -1,8 +1,21 @@
 
 <div class="container">
-    <h4>説明文</h4>
-  <div class="row text-center">
+  
+  <div class="container row col-md-12"> <!-- バナー -->
+     <%= image_tag "banner.png" %>
+  </div>
+  
+  <div class="jumbotron text-secondary"  style="background: url(<%= asset_path "jumbotron.jpg" %>)center; background-size:cover;">
+    <h1>あなたのおススメをシェアしよう</h1>
+    <p>ハマっているコンテンツ<br>
+    おススメしたい本<br>
+    好きな写真<br>
+    なんでもOK!
+    </p>
+  </div>
+  
 
+  <div class="row text-center">
 
     <% @posts.each do |post| %>
       <div class ="card col-md-4 py-3">
